@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}
+           New Report
+{% endblock  %} 
+{% block content %}
+{% comment %} both upadate and adding the repost we do it here  {% endcomment %}
+
+{% comment %} in h2 we show the message in header of update or add report page {% endcomment %}
+<h2>{% if form.instance.pk %}Update{% else %}Add{% endif %} Report</h2>
+<form method="post" enctype = 'multipart/form-data'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Report</button>
+</form>
+{% endblock %}
+

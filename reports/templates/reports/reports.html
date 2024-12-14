@@ -1,0 +1,25 @@
+
+{% extends "layout.html" %}
+{% block title %}
+            Reports
+{% endblock  %} 
+{% block content %}
+<h1>Reports:</h1>
+{% for report in all_reports %} 
+    <ul>
+        <li>
+            <h1>{{ report.title }}</h1>
+            {% comment %} if image is uploaded then we show it {% endcomment %}
+            {% if report.report_image %}
+            <img src="{{ report.report_image.url }}" alt="">
+            {% endif %}
+            <p>{{ report.discription }}</p>
+            <p>date:{{report.date}} |  Posted by: {{report.author}}</p>
+            {% comment %} there are edit and delete buttons {% endcomment %}
+            <a href="{% url 'reports:update_report' report.pk %}">Edit  |</a>
+            <a href="{% url 'reports:delete_report' report.pk %}">Delete</a>
+        </li>
+    
+    </ul>
+{% endfor %}
+{% endblock %}

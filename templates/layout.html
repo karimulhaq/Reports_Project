@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <title>{% block title %}
+        App title
+     {% endblock  %} </title>
+</head>
+<body>
+    <nav>
+        <div class = 'navdiv'>
+        {% if user.is_authenticated  %}
+
+            <a href="/">🏠 Home  |</a>
+            <a href="/newreport">🏤 New Report  |</a>
+            <a href="/about">🙎‍♂️ About  |</a>
+            <a href="/user/logout">🙋‍♂️Logout   |</a>
+            <span>Hello,{{request.user}} </span>
+        {% else %}
+            <a href="/user/signup">🔐 Sign Up</a>
+            <a href="/user/login">🗝 Login</a>
+            <a href="/about">🙎‍♂️ About</a>
+        {% endif %} 
+
+        </div>
+        
+        
+    </nav>
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>

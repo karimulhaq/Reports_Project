@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}
+          Delete report
+{% endblock  %} 
+{% block content %}
+
+<h2>Are you sure you wnat to delete {{ form.title }} ?</h2>
+<form method="post" enctype = 'multipart/form-data'>
+    {% csrf_token %}
+    <button type="submit">yes, delete</button>
+</form>
+<a href="{% url 'reports:home' %}">Cancel</a>
+{% endblock %}
+

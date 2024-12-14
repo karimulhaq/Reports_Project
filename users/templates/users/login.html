@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}
+            Login
+{% endblock  %} 
+{% block content %}
+    <h1>thiss Login  page</h1>
+    <form method = 'POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% comment %} here we show the error message {% endcomment %}
+        {% for message in messages  %}
+            <p>{{ message }}</p>
+        {% endfor %}
+        <button type= 'submit'>Login</button>
+        <p>I do not have an acount, <a href=" {% url "users:signup" %}">Sign Up</a></p>
+    </form>
+{% endblock %}
